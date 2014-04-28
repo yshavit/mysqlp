@@ -1,0 +1,36 @@
+#!/bin/bash
+
+
+# Get the login path names
+paths=()
+path_names="$(mysql_config_editor print --all | awk '/^\[/' | sed 's/^\[//' | sed 's/\]$//')"
+i=0
+while read line; do
+  paths[i]=$line
+  i=$(($i + 1))
+done <<< "$path_names"
+
+# Ask the user which they want
+for i in "${!paths[@]}"; do
+  echo "${i}: ${paths[i]}"
+done
+read -p 'Connect to which profile? ' profile_num
+
+# Sanitize
+re='^[0-9]+$'
+if ! [[ "$profile_num" =~ $re ]]; then
+  echo 'Invalid entry'
+  exit 1
+fi
+profile="${paths[profile_num]}"
+if [[ -z "$profile" ]]; then
+  echo 'Invalid entry'
+  exit 1
+fi
+
+# Launch
+cmd="mysql --login-path=${profile} $@"
+echo "$cmd"
+echo
+$cmd
+
