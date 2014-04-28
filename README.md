@@ -1,15 +1,7 @@
-Simple prompt for using MySQL's `--login-path` option
+Helper prompt for MySQL's `--login-path`
 ===
 
-MySQL has a neat option, `--login-path`, in versions 5.6.6+. You can set up login info (host, username, password) using [mysql_login_path][1], and MySQL will remember those credentials for you. The problem (for me) is that I forget what `login-path` labels I've created! This script simply lists the defined paths for you, then lets you select which you want to use.
-
-    $ mysqlp
-    0: first-login
-    1: another-login
-    2: yet-another-login
-    Connect to which profile?
-
-Here, to connect to my `another-login`, I'd just enter `1` at the prompt. That's it!
+MySQL has a neat option, `--login-path` (versions 5.6.6+). You can set up login info (host, username, password) using [mysql_login_path][1], and MySQL will remember those credentials for you. The problem (for me) is that I forget what `login-path` labels I've created! This script simply lists the defined paths for you, then lets you select which you want to use.
 
 `mysqlp` doesn't take any arguments, but any arguments you pass will be forwarded to the `mysql` client. For instance:
 
