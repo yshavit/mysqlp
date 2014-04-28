@@ -1,5 +1,5 @@
 Helper prompt for MySQL's `--login-path`
-===
+---
 
 MySQL has a neat option, `--login-path` (versions 5.6.6+). You can set up login info (host, username, password) using [mysql_login_path][1], and MySQL will remember those credentials for you. The problem (for me) is that I forget what `login-path` labels I've created! This script simply lists the defined paths for you, then lets you select which you want to use.
 
