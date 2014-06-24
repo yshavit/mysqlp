@@ -12,7 +12,7 @@ done <<< "$path_names"
 
 # Ask the user which they want
 for i in "${!paths[@]}"; do
-  echo "${i}: ${paths[i]}"
+  echo "${paths[i]} (${i})"
 done
 read -p 'Connect to which profile? ' profile_num
 
