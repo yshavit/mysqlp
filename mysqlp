@@ -3,7 +3,7 @@
 
 # Get the login path names
 paths=()
-path_names="$(mysql_config_editor print --all | awk '/^\[/' | sed 's/^\[//' | sed 's/\]$//')"
+path_names="$(mysql_config_editor print --all | awk '/^\[/' | sed 's/^\[//' | sed 's/\]$//' | sort)"
 i=0
 while read line; do
   paths[i]=$line
