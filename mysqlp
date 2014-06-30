@@ -12,7 +12,7 @@ done <<< "$path_names"
 
 # Ask the user which they want
 for i in "${!paths[@]}"; do
-  echo "${paths[i]} (${i})"
+  echo "${paths[i]} ($((i + 1)))"
 done
 read -p 'Connect to which profile? ' profile_num
 
@@ -22,6 +22,7 @@ if ! [[ "$profile_num" =~ $re ]]; then
   echo 'Invalid entry'
   exit 1
 fi
+profile_num=$((profile_num - 1))
 profile="${paths[profile_num]}"
 if [[ -z "$profile" ]]; then
   echo 'Invalid entry'
